@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Web", "ToDoList.Web\ToDoList.Web.csproj", "{1FF0A72F-4B66-4F2C-85B7-718A768E9D94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Web", "ToDoList.Web\ToDoList.Web.csproj", "{1FF0A72F-4B66-4F2C-85B7-718A768E9D94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Model", "ToDoList.Model\ToDoList.Model.csproj", "{D7809677-22BB-482E-8F22-B17302F8A49E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1FF0A72F-4B66-4F2C-85B7-718A768E9D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FF0A72F-4B66-4F2C-85B7-718A768E9D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FF0A72F-4B66-4F2C-85B7-718A768E9D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7809677-22BB-482E-8F22-B17302F8A49E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7809677-22BB-482E-8F22-B17302F8A49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7809677-22BB-482E-8F22-B17302F8A49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7809677-22BB-482E-8F22-B17302F8A49E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
