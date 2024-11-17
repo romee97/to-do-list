@@ -9,9 +9,9 @@
             this.toDoTaskQueryService = toDoTaskQueryService;
         }
 
-        public async Task ValidateWrite(ToDoTask task)
+        public void ValidateWrite(ToDoTask task)
         {
-            var recordInDatabase = await toDoTaskQueryService.TryGet(task.Title, task.TaskDate);
+            var recordInDatabase = toDoTaskQueryService.TryGet(task.Title, task.TaskDate);
 
             if (recordInDatabase is not null && recordInDatabase.Id != task.Id)
                 throw new InvalidDataException($"Another task named '{task.Title}' has already been added for date {task.TaskDate:d}");

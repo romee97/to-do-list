@@ -2,8 +2,8 @@
 {
     public interface IToDoTaskRepository
     {
-        Task Add(ToDoTask task);
-        Task Update(ToDoTask task);
-        Task Delete(int[] ids);
+        void Add(ToDoTask task);
+        void Update(ToDoTask task);
+        void Delete(int[] ids);
     }
 }

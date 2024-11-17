@@ -6,38 +6,38 @@ namespace ToDoList.DAL.Repositories
 {
     public class ToDoTaskRepository : IToDoTaskRepository
     {
-        private readonly IAppDbContext dbContext;
+        private readonly AppDbContext dbContext;
         private readonly IToDoTaskValidator validator;
 
         private DbSet<ToDoTask> DbSet => dbContext.Set<ToDoTask>();
 
-        public ToDoTaskRepository(IAppDbContext dbContext, IToDoTaskValidator validator)
+        public ToDoTaskRepository(AppDbContext dbContext, IToDoTaskValidator validator)
         {
             this.dbContext = dbContext;
             this.validator = validator;
         }
 
-        public async Task Add(ToDoTask task)
+        public void Add(ToDoTask task)
         {
-            await validator.ValidateWrite(task);
+            validator.ValidateWrite(task);
 
             DbSet.Add(task);
         }
 
-        public async Task Delete(int[] ids)
+        public void Delete(int[] ids)
         {
-            var recordsToDelete = await Get(ids);
+            var recordsToDelete = Get(ids);
 
             validator.ValidateDelete(ids, recordsToDelete);
 
             DbSet.RemoveRange(recordsToDelete);
         }
 
-        public async Task Update(ToDoTask task)
+        public void Update(ToDoTask task)
         {
-            await validator.ValidateWrite(task);
+            validator.ValidateWrite(task);
 
-            var taskInDatabase = await Get(task.Id);
+            var taskInDatabase = Get(task.Id);
 
             taskInDatabase.Title = task.Title;
             taskInDatabase.Description = task.Description;
@@ -47,11 +47,11 @@ namespace ToDoList.DAL.Repositories
             DbSet.Update(taskInDatabase);
         }
 
-        private Task<ToDoTask> Get(int id)
-            => DbSet.SingleAsync(t => t.Id == id);
+        private ToDoTask Get(int id)
+            => DbSet.Single(t => t.Id == id);
 
-        private Task<List<ToDoTask>> Get(IEnumerable<int> ids)
+        private List<ToDoTask> Get(IEnumerable<int> ids)
             => DbSet.Where(t => ids.Contains(t.Id))
-                    .ToListAsync();
+                    .ToList();
     }
 }

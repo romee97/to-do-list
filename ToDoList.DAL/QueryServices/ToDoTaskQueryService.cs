@@ -6,22 +6,22 @@ namespace ToDoList.DAL.QueryServices
 {
     public class ToDoTaskQueryService : IToDoTaskQueryService
     {
-        private readonly IAppDbContext dbContext;
+        private readonly AppDbContext dbContext;
 
         private IQueryable<ToDoTask> Query => dbContext.Set<ToDoTask>().AsNoTracking();
 
-        public ToDoTaskQueryService(IAppDbContext dbContext)
+        public ToDoTaskQueryService(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public async Task<IReadOnlyCollection<ToDoTask>> Get(DateTime dateFrom, DateTime dateTo)
-            => await Query.Where(t => t.TaskDate >= dateFrom
-                                   && t.TaskDate <= dateTo)
-                          .ToListAsync();
+        public IReadOnlyCollection<ToDoTask> Get(DateTime dateFrom, DateTime dateTo)
+            => Query.Where(t => t.TaskDate >= dateFrom
+                             && t.TaskDate <= dateTo)
+                    .ToList();
 
-        public Task<ToDoTask?> TryGet(string title, DateTime date)
-            => Query.SingleOrDefaultAsync(t => t.Title == title
-                                            && t.TaskDate == date.Date);
+        public ToDoTask? TryGet(string title, DateTime date)
+            => Query.SingleOrDefault(t => t.Title == title
+                                       && t.TaskDate == date.Date);
     }
 }

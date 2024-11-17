@@ -3,18 +3,11 @@ using ToDoList.Model.Entities.ToDoTask;
 
 namespace ToDoList.DAL.Base
 {
-    public class AppDbContext : DbContext, IAppDbContext
+    public class AppDbContext : DbContext
     {
-        private readonly string connectionString;
-
-        public AppDbContext(string connectionString)
+        public AppDbContext(DbContextOptions options)
+            : base(options)
         {
-            this.connectionString = connectionString;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
