@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ToDoList.DAL\ToDoList.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
