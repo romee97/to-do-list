@@ -5,11 +5,12 @@ namespace ToDoList.Test.Unit
 {
     internal class TestDatabaseInitializer
     {
-        public static async Task ResetDatabase(TestServiceProvider serviceProvider, TestContext testContext, IEnumerable<object> records)
+        public static void ResetDatabase(TestServiceProvider serviceProvider, TestContext testContext, IEnumerable<object> records)
         {
             TryRemoveDbFile(testContext);
 
-            var dbContext = serviceProvider.Get<IAppDbContext>();
+            
+            var dbContext = serviceProvider.Get<AppDbContext>();
             dbContext.Database.EnsureCreated();
 
             var recordsByType = records.ToLookup(x => x.GetType());
@@ -19,12 +20,12 @@ namespace ToDoList.Test.Unit
                 seedMethod.MakeGenericMethod(grouping.Key)
                           .Invoke(null, [dbContext, grouping]);
 
-            await dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
         }
 
         private static void TryRemoveDbFile(TestContext testContext)
         {
-            var regex = new Regex("(?:Data source=)(.+)");
+            var regex = new Regex("(?:Data source=)(.+)(?:;)");
             var connectionString = testContext.Properties["DbConnectionString"] as string
                 ?? throw new ApplicationException("Database connection info not found");
 
@@ -37,7 +38,7 @@ namespace ToDoList.Test.Unit
                 File.Delete(dbFilePath);
         }
 
-        public static void Seed<T>(IAppDbContext dbContext, IEnumerable<object> records) where T : class
+        public static void Seed<T>(AppDbContext dbContext, IEnumerable<object> records) where T : class
         {
             dbContext.Set<T>()
                      .AddRange(records.OfType<T>());

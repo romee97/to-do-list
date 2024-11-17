@@ -3,22 +3,26 @@ using ToDoList.Web;
 
 namespace ToDoList.Test.Unit
 {
-    public class TestServiceProvider
+    public class TestServiceProvider : IDisposable
     {
-        private readonly IServiceProvider serviceProvider;
+        private IServiceScope serviceScope;
 
         public TestServiceProvider(TestContext context)
         {
             var serviceCollection = new ServiceCollection();
             var connectionString = context.Properties["DbConnectionString"] as string
-                ?? throw new ApplicationException("Database connection info not found");
+                ?? throw new ApplicationException("Test database connection info not found");
 
             ServiceRegistrator.RegisterRequiredServices(serviceCollection, connectionString);
 
-            serviceProvider = serviceCollection.BuildServiceProvider();
+            serviceScope = serviceCollection.BuildServiceProvider()
+                                            .CreateScope();
         }
 
-        public T Get<T>() where T : class
-            => serviceProvider.GetRequiredService<T>();
+        public void Dispose()
+            => serviceScope.Dispose();
+
+        public T Get<T>() where T : notnull 
+            => serviceScope.ServiceProvider.GetRequiredService<T>();
     }
 }

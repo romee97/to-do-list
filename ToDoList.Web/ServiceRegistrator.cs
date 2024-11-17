@@ -1,4 +1,5 @@
-﻿using ToDoList.DAL.Base;
+﻿using Microsoft.EntityFrameworkCore;
+using ToDoList.DAL.Base;
 using ToDoList.DAL.QueryServices;
 using ToDoList.DAL.Repositories;
 using ToDoList.Model.Entities.ToDoTask;
@@ -12,10 +13,11 @@ namespace ToDoList.Web
 
         public static void RegisterRequiredServices(IServiceCollection serviceCollection, string connectionString)
         {
-            serviceCollection.AddTransient<IAppDbContext>(x => new AppDbContext(connectionString));
+            serviceCollection.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
             serviceCollection.AddScoped<IToDoTaskQueryService, ToDoTaskQueryService>();
             serviceCollection.AddScoped<IToDoTaskRepository, ToDoTaskRepository>();
             serviceCollection.AddScoped<IToDoTaskValidator, ToDoTaskValidator>();
+            serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         private static string GetDbConnectionString(IConfigurationManager configurationManager)
