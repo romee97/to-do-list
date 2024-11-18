@@ -13,9 +13,6 @@ namespace ToDoList.Web.Pages
         [BindProperty]
         public ToDoTask Task { get; set; }
 
-        [TempData]
-        public string SerializedTask { get; set; }
-
         public ModifyTaskModel(IToDoTaskRepository toDoTaskRepository, IUnitOfWork unitOfWork)
         {
             this.toDoTaskRepository = toDoTaskRepository;
