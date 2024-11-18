@@ -5,26 +5,23 @@
 }
 
 <div class="text-center">
-    <form method="post" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">
-        <button type="submit">Add new task</button>
+    <form method="post" asp-page-handler="DateChanged">
+        <label for="task-date">showing tasks for date: </label>
+        <input type="date" asp-for="DateFilter" id="task-date" oninput="this.form.submit()" name="TaskDate" />
+        <button type="submit" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">Add new task</button>
     </form>
     @if (!Model.Tasks.Any())
     {
-        <h2>No tasks to do!</h2>
+        <h2>No tasks for date @Model.DateFilter.ToString("d")!</h2>
     }
-    @if (Model.OverdueTasks.Any())
+    @if (Model.TasksToDo.Any())
     {    
-        <h2 style="color:indianred">Overdue</h2>
-        @Html.Partial("_TaskTable", Model.OverdueTasks)
+        <h2 style="color:indianred">To do</h2>
+        @Html.Partial("_TaskTable", Model.TasksToDo)
     }
-    @if (Model.CurrentTasks.Any())
-    {    
-        <h2>Current</h2>
-        @Html.Partial("_TaskTable", Model.CurrentTasks)
-    }
-    @if (Model.UpcomingTasks.Any())
-    {    
-        <h2>Upcoming</h2>
-        @Html.Partial("_TaskTable", Model.UpcomingTasks)
+    @if (Model.DoneTasks.Any())
+    {
+        <h2 style="color:yellowgreen">Done</h2>
+        @Html.Partial("_TaskTable", Model.DoneTasks)
     }
 </div>

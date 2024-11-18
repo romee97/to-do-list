@@ -15,9 +15,8 @@ namespace ToDoList.DAL.QueryServices
             this.dbContext = dbContext;
         }
 
-        public IReadOnlyCollection<ToDoTask> Get(DateTime dateFrom, DateTime dateTo)
-            => Query.Where(t => t.TaskDate >= dateFrom
-                             && t.TaskDate <= dateTo)
+        public IReadOnlyCollection<ToDoTask> Get(DateTime date)
+            => Query.Where(t => t.TaskDate == date)
                     .ToList();
 
         public ToDoTask? TryGet(string title, DateTime date)

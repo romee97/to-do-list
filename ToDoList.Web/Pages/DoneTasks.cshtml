@@ -1,0 +1,31 @@
+﻿@page
+@using ToDoList.Web.Pages
+@model DoneTasksModel
+@{
+    ViewData["Title"] = "Done tasks";
+}
+
+<div class="text-center">
+    <form method="post" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">
+        <button type="submit">Add new task</button>
+    </form>
+    @if (!Model.Tasks.Any())
+    {
+        <h2>No done tasks so far!</h2>
+    }
+    @if (Model.PastTasks.Any())
+    {
+        <h2>Past</h2>
+        @Html.Partial("_TaskCalendar", Model.PastTasks)
+    }
+    @if (Model.CurrentTasks.Any())
+    {
+        <h2>Current</h2>
+        @Html.Partial("_TaskCalendar", Model.CurrentTasks)
+    }
+    @if (Model.FutureTasks.Any())
+    {
+        <h2>Future</h2>
+        @Html.Partial("_TaskCalendar", Model.FutureTasks)
+    }
+</div>

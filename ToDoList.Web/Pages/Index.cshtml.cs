@@ -1,7 +1,4 @@
-using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.Json;
 using ToDoList.Service.Entities.ToDoTask;
 
 namespace ToDoList.Pages
@@ -12,10 +9,10 @@ namespace ToDoList.Pages
         private readonly IToDoTaskQueryService toDoTaskQueryService;
         private readonly IToDoTaskRepository toDoTaskRepository;
 
-        public ILookup<DateTime, ToDoTask> Tasks { get; private set; }
-        public IEnumerable<IGrouping<DateTime, ToDoTask>> OverdueTasks => Tasks.Where(x => x.Key < DateTime.Today);
-        public IEnumerable<IGrouping<DateTime, ToDoTask>> CurrentTasks => Tasks.Where(x => x.Key == DateTime.Today);
-        public IEnumerable<IGrouping<DateTime, ToDoTask>> UpcomingTasks => Tasks.Where(x => x.Key > DateTime.Today);
+        public DateTime DateFilter { get; set; } = DateTime.Today;
+        public ILookup<bool, ToDoTask> Tasks { get; private set; }
+        public IEnumerable<ToDoTask> DoneTasks => Tasks[true];
+        public IEnumerable<ToDoTask> TasksToDo => Tasks[false];
 
         public IndexModel(ILogger<IndexModel> logger, IToDoTaskQueryService toDoTaskQueryService, IToDoTaskRepository toDoTaskRepository)
         {
@@ -29,8 +26,19 @@ namespace ToDoList.Pages
             FetchData();
         }
 
+        public void OnPostDateChanged(DateChangedParams dateChangedParams)
+        {
+            DateFilter = dateChangedParams.TaskDate;
+            FetchData();
+        }
+
         public void FetchData()
-            => Tasks = toDoTaskQueryService.GetAll(done: false)
-                                           .ToLookup(t => t.TaskDate);
+            => Tasks = toDoTaskQueryService.Get(DateFilter)
+                                           .ToLookup(t => t.IsDone);
+
+        public class DateChangedParams
+        {
+            public DateTime TaskDate { get; set; }
+        }
     }
 }
