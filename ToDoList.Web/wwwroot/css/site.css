@@ -40,3 +40,11 @@ body {
 hr {
     margin: auto auto;
 }
+
+tr {
+    background-color: antiquewhite;
+}
+
+tr:hover {
+    background-color: navajowhite;
+}

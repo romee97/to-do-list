@@ -4,18 +4,24 @@
     @foreach (var task in Model.OrderBy(t => t.Title))
     {
         <tr>
-            <td style="width:20%;text-align:left;padding-left:2%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><b>@task.Title</b></td>
+            <td style="width:20%;text-align:left;padding-left:2%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                <div onclick="document.getElementById('task_form').submit(); return false;">
+                    <b>@task.Title</b>
+                </div>
+            </td>
             <td style="width:60%;text-align:left;padding-left:2%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-                @task.Description
+                <div onclick="document.getElementById('task_form').submit(); return false;">
+                    @task.Description
+                </div>
             </td>
             <td style="width:fit-content">
-                <form method="post" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">
+                <form id="task_form" method="post" asp-page="ViewTask">
                     <input type="hidden" value="@task.Id" name="Id" />
                     <input type="hidden" value="@task.Title" name="Title" />
                     <input type="hidden" value="@task.Description" name="Description" />
                     <input type="hidden" value="@task.TaskDate" name="TaskDate" />
                     <input type="hidden" value="@task.IsDone" name="IsDone" />
-                    <button type="submit">modify</button>
+                    <button type="submit" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">modify</button>
                 </form>
             </td>
             <td style="width:fit-content">
