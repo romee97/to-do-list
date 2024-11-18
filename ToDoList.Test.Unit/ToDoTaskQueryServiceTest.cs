@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using ToDoList.Model.Entities.ToDoTask;
+using ToDoList.Service.Entities.ToDoTask;
 
 namespace ToDoList.Test.Unit
 {

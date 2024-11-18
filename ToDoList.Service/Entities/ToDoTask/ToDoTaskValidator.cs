@@ -1,4 +1,4 @@
-﻿namespace ToDoList.Model.Entities.ToDoTask
+﻿namespace ToDoList.Service.Entities.ToDoTask
 {
     public class ToDoTaskValidator : IToDoTaskValidator
     {

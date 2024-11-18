@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ToDoList.DAL.Base;
-using ToDoList.Model.Entities.ToDoTask;
+using ToDoList.Service.Entities.ToDoTask;
 
 namespace ToDoList.DAL.QueryServices
 {
@@ -23,5 +23,9 @@ namespace ToDoList.DAL.QueryServices
         public ToDoTask? TryGet(string title, DateTime date)
             => Query.SingleOrDefault(t => t.Title == title
                                        && t.TaskDate == date.Date);
+
+        public IReadOnlyCollection<ToDoTask> GetAll(bool done)
+            => Query.Where(t => t.IsDone == done)
+                    .ToList();
     }
 }

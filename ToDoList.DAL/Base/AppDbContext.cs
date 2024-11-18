@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ToDoList.Model.Entities.ToDoTask;
+using ToDoList.Service.Entities.ToDoTask;
 
 namespace ToDoList.DAL.Base
 {
@@ -12,9 +12,7 @@ namespace ToDoList.DAL.Base
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ToDoTask>()
-                        .HasMany(e => e.Predecessors)
-                        .WithMany(e => e.Successors);
+            modelBuilder.Entity<ToDoTask>();
         }
     }
 }

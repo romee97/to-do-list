@@ -1,10 +1,30 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Tasks to do";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form method="post" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">
+        <button type="submit">Add new task</button>
+    </form>
+    @if (!Model.Tasks.Any())
+    {
+        <h2>No tasks to do!</h2>
+    }
+    @if (Model.OverdueTasks.Any())
+    {    
+        <h2 style="color:indianred">Overdue</h2>
+        @Html.Partial("_TaskTable", Model.OverdueTasks)
+    }
+    @if (Model.CurrentTasks.Any())
+    {    
+        <h2>Current</h2>
+        @Html.Partial("_TaskTable", Model.CurrentTasks)
+    }
+    @if (Model.UpcomingTasks.Any())
+    {    
+        <h2>Upcoming</h2>
+        @Html.Partial("_TaskTable", Model.UpcomingTasks)
+    }
 </div>
