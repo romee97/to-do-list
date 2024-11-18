@@ -1,15 +1,16 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Tasks to do";
+    ViewData["Title"] = $"Tasks for date {Model.DateFilter:d}";
 }
 
 <div class="text-center">
     <form method="post" asp-page-handler="DateChanged">
-        <label for="task-date">showing tasks for date: </label>
+        <label for="task-date">Displaying tasks for date: </label>
         <input type="date" asp-for="DateFilter" id="task-date" oninput="this.form.submit()" name="TaskDate" />
-        <button type="submit" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">Add new task</button>
+        <button type="submit" class="accept" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">Add new task</button>
     </form>
+    <br />
     @if (!Model.Tasks.Any())
     {
         <h2>No tasks for date @Model.DateFilter.ToString("d")!</h2>

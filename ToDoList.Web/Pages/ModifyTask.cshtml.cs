@@ -50,5 +50,10 @@ namespace ToDoList.Web.Pages
 
             return RedirectToPage("Index");
         }
+
+        public IActionResult OnPostReject(ToDoTask _)
+        {
+            return RedirectToPage("Index");
+        }
     }
 }
