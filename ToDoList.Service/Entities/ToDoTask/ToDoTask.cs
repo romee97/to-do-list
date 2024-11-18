@@ -1,4 +1,4 @@
-﻿namespace ToDoList.Model.Entities.ToDoTask
+﻿namespace ToDoList.Service.Entities.ToDoTask
 {
     public class ToDoTask
     {
@@ -7,8 +7,5 @@
         public string Description { get; set; } = string.Empty;
         public DateTime TaskDate { get; set; }
         public bool IsDone { get; set; }
-
-        public ICollection<ToDoTask> Predecessors { get; set; } = [];
-        public ICollection<ToDoTask> Successors { get; set; } = [];
     }
 }

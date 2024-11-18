@@ -1,0 +1,33 @@
+﻿@using System.Text.Json
+@using ToDoList.Service.Entities.ToDoTask
+@model IEnumerable<IGrouping<DateTime, ToDoTask>>
+
+@foreach (var tasksPerDay in Model.OrderBy(x => x.Key))
+{
+    <h4>@tasksPerDay.Key.ToShortDateString()</h4>
+    <table class="styled-table">
+        @foreach (var task in tasksPerDay.OrderBy(t => t.Title))
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>
+                    <form method="post" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">
+                        <input type="hidden" value="@task.Id" name="Id" />
+                        <input type="hidden" value="@task.Title" name="Title" />
+                        <input type="hidden" value="@task.Description" name="Description" />
+                        <input type="hidden" value="@task.TaskDate" name="TaskDate" />
+                        <input type="hidden" value="@task.IsDone" name="IsDone" />
+                        <button type="submit">modify</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" asp-page="ModifyTask" asp-page-handler="Delete">
+                        <input type="hidden" value="@task.Id" name="Id" />
+                        <button type="submit">delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}

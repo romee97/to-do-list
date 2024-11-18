@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using ToDoList.DAL.Base;
 using ToDoList.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,5 +27,11 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.EnsureCreated();
+}
 
 app.Run();

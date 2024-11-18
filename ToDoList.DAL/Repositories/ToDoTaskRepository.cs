@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ToDoList.DAL.Base;
-using ToDoList.Model.Entities.ToDoTask;
+using ToDoList.Service.Entities.ToDoTask;
 
 namespace ToDoList.DAL.Repositories
 {

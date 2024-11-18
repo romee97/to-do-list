@@ -1,0 +1,10 @@
+﻿@page
+@using ToDoList.Service.Entities.ToDoTask
+@model ToDoTask
+<form method="post" asp-page="ModifyTask">
+    <input type="hidden" asp-for="Title" name="Title" />
+    <input type="hidden" asp-for="Description" name="Description" />
+    <input type="hidden" asp-for="TaskDate" name="TaskDate" />
+    <input type="hidden" asp-for="IsDone" name="IsDone" />
+    <button type="submit">modify</button>
+</form>

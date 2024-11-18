@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using ToDoList.DAL.Base;
 using ToDoList.DAL.QueryServices;
 using ToDoList.DAL.Repositories;
-using ToDoList.Model.Entities.ToDoTask;
+using ToDoList.Service.Entities.ToDoTask;
 
 namespace ToDoList.Web
 {
@@ -21,7 +22,7 @@ namespace ToDoList.Web
         }
 
         private static string GetDbConnectionString(IConfigurationManager configurationManager)
-            => configurationManager["ConnectionStrings.Database"]
+            => configurationManager["ConnectionStrings:Database"]
             ?? throw new ApplicationException("Database connection info not found");
     }
 }

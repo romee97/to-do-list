@@ -5,11 +5,11 @@ VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Web", "ToDoList.Web\ToDoList.Web.csproj", "{1FF0A72F-4B66-4F2C-85B7-718A768E9D94}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Model", "ToDoList.Model\ToDoList.Model.csproj", "{D7809677-22BB-482E-8F22-B17302F8A49E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Service", "ToDoList.Service\ToDoList.Service.csproj", "{D7809677-22BB-482E-8F22-B17302F8A49E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.DAL", "ToDoList.DAL\ToDoList.DAL.csproj", "{2C0D76DC-534E-455C-993B-C835754950CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.DAL", "ToDoList.DAL\ToDoList.DAL.csproj", "{2C0D76DC-534E-455C-993B-C835754950CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Test.Unit", "ToDoList.Test.Unit\ToDoList.Test.Unit.csproj", "{6AFCFAD7-F034-4DE3-9291-2C7FF41B1691}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Test.Unit", "ToDoList.Test.Unit\ToDoList.Test.Unit.csproj", "{6AFCFAD7-F034-4DE3-9291-2C7FF41B1691}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
