@@ -1,0 +1,31 @@
+﻿@page
+@using ToDoList.Web.Pages
+@model TasksToDoModel
+@{
+    ViewData["Title"] = "Tasks to do";
+}
+
+<div class="text-center">
+    <form method="post" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">
+        <button type="submit">Add new task</button>
+    </form>
+    @if (!Model.Tasks.Any())
+    {
+        <h2>No tasks to do!</h2>
+    }
+    @if (Model.OverdueTasks.Any())
+    {
+        <h2 style="color:indianred">Overdue</h2>
+        @Html.Partial("_TaskCalendar", Model.OverdueTasks)
+    }
+    @if (Model.CurrentTasks.Any())
+    {
+        <h2>Current</h2>
+        @Html.Partial("_TaskCalendar", Model.CurrentTasks)
+    }
+    @if (Model.UpcomingTasks.Any())
+    {
+        <h2>Upcoming</h2>
+        @Html.Partial("_TaskCalendar", Model.UpcomingTasks)
+    }
+</div>

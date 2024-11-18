@@ -1,0 +1,8 @@
+﻿@using ToDoList.Service.Entities.ToDoTask
+@model IEnumerable<IGrouping<DateTime, ToDoTask>>
+
+@foreach (var tasksPerDay in Model.OrderBy(x => x.Key))
+{
+    <h4>@tasksPerDay.Key.ToShortDateString()</h4>
+    @Html.Partial("_TaskTable", tasksPerDay)
+}

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.Json;
 using ToDoList.DAL.Base;
 using ToDoList.Service.Entities.ToDoTask;
 

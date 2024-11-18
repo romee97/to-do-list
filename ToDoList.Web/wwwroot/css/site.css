@@ -26,8 +26,17 @@ body {
     margin: auto auto;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 400px;
+    min-width: 500px;
+    width: 50%;
+    table-layout: fixed;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
+.centered-div {
+    max-width: 30%;
+    margin: auto auto;
+}
 
+hr {
+    margin: auto auto;
+}
