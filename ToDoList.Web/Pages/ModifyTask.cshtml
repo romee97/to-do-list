@@ -1,8 +1,12 @@
 ﻿@page
 @using ToDoList.Web.Pages
 @model ModifyTaskModel
-<div class="centered-div">
-    <form method="post" asp-page-handler="Save">
+@{
+    ViewData["Title"] = $"Modify task - {Model.Task.Title} - {Model.Task.TaskDate}";
+}
+<div class="centered-div-50">
+    <div class="text-center"><h3>Task #@Model.Task.Id - modify</h3></div>
+    <form method="post">
         <label for="title">Title</label><br />
         <input type="text" asp-for="Task.Title" /><br />
         <label for="description">Description</label><br />
@@ -10,8 +14,16 @@
         <label for="task-date">Deadline</label><br />
         <input type="date" asp-for="Task.TaskDate" /><br />
         <label for="is-done">Mark as done</label><br />
-        <input type="checkbox" asp-for="Task.IsDone" /><br />
+        @if (Model.Task.IsDone)
+        {
+            <input type="checkbox" asp-for="Task.IsDone" checked="checked" /><br />
+        } 
+        else
+        {
+            <input type="checkbox" asp-for="Task.IsDone" /><br />
+        }
         <input type="hidden" asp-for="Task.Id" />
-        <button type="submit">Save task</button>
+        <button type="submit" class="accept" asp-page-handler="Save">Save task</button>
+        <button type="submit" class="delete" asp-page-handler="Reject">Reject</button>
     </form>
 </div>

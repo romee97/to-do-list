@@ -7,8 +7,9 @@
 
 <div class="text-center">
     <form method="post" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">
-        <button type="submit">Add new task</button>
+        <button type="submit" class="accept">Add new task</button>
     </form>
+    <br />
     @if (!Model.Tasks.Any())
     {
         <h2>No done tasks so far!</h2>

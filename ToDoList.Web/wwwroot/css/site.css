@@ -32,8 +32,13 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.centered-div {
+.centered-div-30 {
     max-width: 30%;
+    margin: auto auto;
+}
+
+.centered-div-50 {
+    max-width: 50%;
     margin: auto auto;
 }
 
@@ -47,4 +52,51 @@ tr {
 
 tr:hover {
     background-color: navajowhite;
+}
+
+button {
+    border-radius: 5px 5px;
+    border-width: 2px;
+}
+
+.delete {
+    background-color: orangered;
+    color: lightyellow;
+    border-color: lightyellow;
+}
+
+.accept {
+    background-color: royalblue;
+    color: aliceblue;
+    border-color: aliceblue;
+}
+
+input, textarea {
+    background-color: whitesmoke;
+    color: black;
+}
+
+textarea {
+    width: 100%;
+}
+
+input:focus, textarea:focus {
+    background-color: aliceblue;
+    color: midnightblue;
+}
+
+.title-cell, .description-cell {
+    text-align: left;
+    padding-left: 2%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.title-cell {
+    width: 20%;
+}
+
+.description-cell {
+    width: 60%;
 }

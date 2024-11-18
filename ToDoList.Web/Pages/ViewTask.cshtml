@@ -1,14 +1,18 @@
 ﻿@page
 @model ToDoList.Web.Pages.ViewTaskModel
-<div class="centered-div">
+@{
+    ViewData["Title"] = $"View task - {Model.Task.Title} - {Model.Task.TaskDate}";
+}
+<div class="centered-div-50">
+    <div class="text-center"><h3>Task #@Model.Task.Id - view</h3></div>
     <form method="post">
         <input type="hidden" value="@Model.Task.Id" name="Id" />
         <input type="hidden" value="@Model.Task.Title" name="Title" />
         <input type="hidden" value="@Model.Task.Description" name="Description" />
         <input type="hidden" value="@Model.Task.TaskDate" name="TaskDate" />
         <input type="hidden" value="@Model.Task.IsDone" name="IsDone" />
-        <button type="submit" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">modify</button>
-        <button type="submit" asp-page="ModifyTask" asp-page-handler="Delete">delete</button>
+        <button type="submit" class="accept" asp-page="ModifyTask" asp-page-handler="AddOrUpdate">modify</button>
+        <button type="submit" class="accept" asp-page="ModifyTask" asp-page-handler="Delete">delete</button>
     </form>
     <label for="title">Title</label>
     <h4 id="title">@Model.Task.Title</h4>
