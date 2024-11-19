@@ -25,6 +25,8 @@ namespace ToDoList.Web.Pages
 
         public IActionResult OnPostSave()
         {
+            Task.Description ??= string.Empty;
+
             if (Task.Id != 0)
                 toDoTaskRepository.Update(Task);
             else

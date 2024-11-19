@@ -5,12 +5,12 @@
     {
         <tr>
             <td class="title-cell">
-                <div id="@task.Id" onclick="document.getElementById('task_form' + id.toString()).submit(); return false;">
+                <div id="@task.Id" class="hyperlink" onclick="document.getElementById('task_form' + id.toString()).submit(); return false;">
                     <b>@task.Title</b>
                 </div>
             </td>
             <td class="description-cell">
-                <div id="@task.Id" onclick="document.getElementById('task_form' + id.toString()).submit(); return false;">
+                <div id="@task.Id" class="hyperlink" onclick="document.getElementById('task_form' + id.toString()).submit(); return false;">
                     @task.Description
                 </div>
             </td>

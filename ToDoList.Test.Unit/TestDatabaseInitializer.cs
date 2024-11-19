@@ -27,10 +27,10 @@ namespace ToDoList.Test.Unit
         {
             var regex = new Regex("(?:Data source=)(.+)(?:;)");
             var connectionString = testContext.Properties["DbConnectionString"] as string
-                ?? throw new ApplicationException("Database connection info not found");
+                ?? throw new ApplicationException("Database connection info not found.");
 
             if (!regex.IsMatch(connectionString))
-                throw new ApplicationException("Could not parse database connection info");
+                throw new ApplicationException("Could not parse database connection info.");
 
             var dbFilePath = regex.Match(connectionString).Groups[1].Value;
 
