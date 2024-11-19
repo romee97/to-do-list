@@ -85,20 +85,21 @@ input:focus, textarea:focus {
     color: midnightblue;
 }
 
-.title-cell, .description-cell {
-    text-align: left;
-    padding-left: 2%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap
-}
-
 .title-cell {
     width: 20%;
 }
 
 .description-cell {
     width: 60%;
+}
+
+.cell-contents {
+    text-align: left;
+    padding-left: 2%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
 }
 
 .hyperlink:hover {
