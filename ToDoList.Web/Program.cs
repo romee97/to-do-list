@@ -12,7 +12,7 @@ ServiceRegistrator.RegisterRequiredServices(builder.Services, builder.Configurat
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-//if (!app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler(e =>
     {
