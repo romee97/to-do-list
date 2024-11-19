@@ -11,7 +11,7 @@ namespace ToDoList.Test.Unit
         {
             var serviceCollection = new ServiceCollection();
             var connectionString = context.Properties["DbConnectionString"] as string
-                ?? throw new ApplicationException("Test database connection info not found");
+                ?? throw new ApplicationException("Test database connection info not found.");
 
             ServiceRegistrator.RegisterRequiredServices(serviceCollection, connectionString);
 

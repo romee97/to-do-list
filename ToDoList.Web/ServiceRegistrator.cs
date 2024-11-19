@@ -23,6 +23,6 @@ namespace ToDoList.Web
 
         private static string GetDbConnectionString(IConfigurationManager configurationManager)
             => configurationManager["ConnectionStrings:Database"]
-            ?? throw new ApplicationException("Database connection info not found");
+            ?? throw new ApplicationException("Database connection info not found.");
     }
 }
