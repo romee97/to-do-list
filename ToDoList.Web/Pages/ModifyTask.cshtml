@@ -5,7 +5,9 @@
     ViewData["Title"] = $"Modify task - {Model.Task.Title} - {Model.Task.TaskDate}";
 }
 <div class="centered-div-50">
-    <div class="text-center"><h3>Task #@Model.Task.Id - modify</h3></div>
+    <div class="text-center">
+        <h3>@(Model.Task.Id == 0 ? "Add new task" : $"Task #{Model.Task.Id} - modify")</h3>
+    </div>
     <form method="post">
         <label for="title">Title</label><br />
         <input type="text" asp-for="Task.Title" /><br />
