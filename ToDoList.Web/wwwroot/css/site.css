@@ -59,14 +59,18 @@ button {
     border-width: 2px;
 }
 
+.borderless {
+    border-width: 0px;
+}
+
 .delete {
-    background-color: orangered;
+    background-image: linear-gradient(lightsalmon, orangered);
     color: lightyellow;
     border-color: lightyellow;
 }
 
 .accept {
-    background-color: royalblue;
+    background-image: linear-gradient(lightsteelblue, royalblue);
     color: aliceblue;
     border-color: aliceblue;
 }
@@ -105,4 +109,8 @@ input:focus, textarea:focus {
 .hyperlink:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.button-cell {
+    width: fit-content;
 }
