@@ -17,7 +17,14 @@
     <label for="title">Title</label>
     <h4 id="title">@Model.Task.Title</h4>
     <label for="description">Description</label>
-    <h4 id="description">@Model.Task.Description</h4>
+    @if (!string.IsNullOrEmpty(Model.Task.Description))
+    {
+        <h4 id="description">@Model.Task.Description</h4>
+    }
+    else
+    {
+        <p><i>(empty)</i></p>
+    }
     <label for="taskDate">Deadline</label>
     <h4 id="taskDate">@Model.Task.TaskDate.ToShortDateString()</h4>
     <label for="isDone">Status</label>
